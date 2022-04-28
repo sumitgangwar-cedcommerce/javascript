@@ -1,0 +1,31 @@
+#BTT{
+    width: 20%;
+    height: 7vh;
+    background-color: white;
+    margin-top: 3vh;
+    margin-left: 33%;
+}
+table{
+    margin-left: 30%;
+    margin-top: 10%;
+}
+#out{
+   
+  
+    width: 70%;
+    
+}
+
+th{
+   width: 120vh;
+  
+   
+}
+td{
+    width: 25vh;
+    padding-left: 10%;
+    margin-left: 10vh;
+}
+.tt{
+    width: 19vh;
+}
