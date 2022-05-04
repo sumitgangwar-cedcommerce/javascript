@@ -1,9 +1,7 @@
 // Setup
 const myArray = [];
-let i=5;
-while(i>-1){
-  myArray.push(i);
-  i--;
-}
 
 // Only change code below this line
+for(var i=1;i<6;i++){
+  myArray.push(i);
+}
