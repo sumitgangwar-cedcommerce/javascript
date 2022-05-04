@@ -1,1 +1,2 @@
-var a = 5;
+var myFirstName = "Sumit";
+var myLastName = "Gangwar";
