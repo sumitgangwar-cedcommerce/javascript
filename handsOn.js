@@ -1,5 +1,2 @@
-// Only change code below this line
-const myArray = [
-    ['Sumit'],
-    [43]
-  ];
+const myArray = [50, 60, 70];
+var myData = myArray[0];
