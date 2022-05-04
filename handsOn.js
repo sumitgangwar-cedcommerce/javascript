@@ -1,1 +1,2 @@
-const myStr = "This is start "+"this is end"
+let myStr = "This is the first sentence. ";
+myStr+="This is the second sentence."
