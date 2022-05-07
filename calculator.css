@@ -1,0 +1,23 @@
+#main{
+    margin-left: 30%;
+    margin-top: 3%;
+}
+button{
+    width: 15vh;
+    height: 15vh;
+    font-size: 6vh;
+}
+input{
+    width: 60.5vh;
+    height: 10vh;
+    font-size: 6vh;
+    margin-left: .5vh;
+    background-color: white;
+    color: black;
+}
+#clear{
+    width: 20vh;
+    background-color: red;
+    align-items: center;
+    margin-left: 20vh;
+}

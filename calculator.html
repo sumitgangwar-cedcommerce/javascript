@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/home/cedcoss/javascript/calculator.css">
+</head>
+<body>
+  <div id="main">
+    <div><input type="text"  id="inp" disabled></div>
+    <div>
+      <table>
+        <tr>
+          <td><button value="1" onclick="myfun(this)">1</button></td>
+          <td><button value="2" onclick="myfun(this)">2</button></td>
+          <td><button value="3" onclick="myfun(this)">3</button></td>
+          <td><button value="+" onclick="myfun(this)">+</button></td>
+        </tr>
+        <tr>
+          <td><button value="4" onclick="myfun(this)">4</button></td>
+          <td><button value="5" onclick="myfun(this)">5</button></td>
+          <td><button value="6" onclick="myfun(this)">6</button></td>
+          <td><button value="-" onclick="myfun(this)">-</button></td>
+        </tr>
+        <tr>
+          <td><button value="7" onclick="myfun(this)">7</button></td>
+          <td><button value="8" onclick="myfun(this)">8</button></td>
+          <td><button value="9" onclick="myfun(this)">9</button></td>
+          <td><button value="/" onclick="myfun(this)">/</button></td>
+        </tr>
+        <tr>
+          <td><button value="." onclick="myfun(this)">.</button></td>
+          <td><button value="0" onclick="myfun(this)">0</button></td>
+          <td><button value="=" onclick="myfun(this)">=</button></td>
+          <td><button value="*" onclick="myfun(this)">*</button></td>
+        </tr>
+      </table>
+      <button id="clear" onclick="clear_txt()">Clear</button>
+      <h3 id="err"></h3>
+    </div>
+  </div>
+  <script src="/home/cedcoss/javascript/calculator.js"></script>
+</body>
+
+</html>
