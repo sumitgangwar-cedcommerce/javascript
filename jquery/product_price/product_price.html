@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <style>
+        #main{
+            margin-left: 30%;
+            margin-top: 15%;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        tr , td , th{
+            border: solid 1px rgb(223, 223, 223);
+            padding: 1vh;
+            padding-right: 15vh;
+        }
+        tr:hover{
+            background-color: rgb(121, 121, 121);
+        }
+    </style>
+    <div id="main">
+        <h1>Product</h1>
+        <table id="tab">
+                <tr>
+                    <th>Name</th>
+                    <th>Size/Color</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>Duffle bag</td>
+                    <td>
+                        <select name="sel_name" id="sel_s">
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </td>
+                    <td id="s_price">1000</td>
+                </tr>
+                <tr>
+                    <td>T-Shirt</td>
+                    <td>
+                        <select name="sel_name" id="sel_t">
+                            <option value="Light Grey">Light Grey</option>
+                            <option value="Red">Red</option>
+                            <option value="Blue">Blue</option>
+                        </select>
+                    </td>
+                    <td id="t_price">1200</td>
+                </tr>
+        </table>
+    </div>
+</body>
+<script src="/home/cedcoss/javascript/jquery/product_price/product_price.js"></script>
+</html>
