@@ -15,24 +15,24 @@
 
       <br /><br /><br /><br />
       <div id="show">
-        <label for="Company">Company:</label>
-        <br />
-        <input type="text" id="Company" />
-        <br />
-        <label for="Model">Model:</label>
-        <br />
-        <input type="text" id="Model" />
-        <br />
-        <label for="Memory">Memory:</label>
-        <br />
-        <input type="number" id="Memory" />
-        <br />
-        <label for="Price">Price:</label>
-        <br />
-        <input type="number" id="Price" />
-        <br />
-        <button type="submit" onclick="check()" ;>Add</button>
+        <select name="product" id="product">
+          <option value="">-select product-</option>
+          <option value="Samsung">Samsung Galaxy</option>
+          <option value="Nokia">Nokia S730</option>
+          <option value="Xiaomi">Xiaomi Note</option>
+          <option value="Motorola">Motorola G10</option>
+          <option value="Apple">Apple S12</option>
+        </select>
+        <input
+          type="number"
+          name="quantity"
+          id="quantity"
+          placeholder="quantity"
+        />
+        <button type="button" onclick="Add()" ;>Add</button>
+        <button type="submit" onclick="check()" ;>Generate Bill</button>
       </div>
+      <div id="final"></div>
     </div>
 
     <script>
@@ -85,38 +85,41 @@
 
       text += "</table>";
       document.getElementById("res").innerHTML = text;
+      const arr = [];
+      count = 0;
+
+      function Add() {
+        var product = document.getElementById("product").value;
+
+        var quantity = document.getElementById("quantity").value;
+        if (product == "Samsung") var Amount = Arr[0].Price * quantity;
+        if (product == "Nokia") var Amount = Arr[1].Price * quantity;
+        if (product == "Xiaomi") var Amount = Arr[2].Price * quantity;
+        if (product == "Motorola") var Amount = Arr[3].Price * quantity;
+        if (product == "Apple") var Amount = Arr[4].Price * quantity;
+
+        arr.push([product, quantity, Amount]);
+      }
 
       function check() {
-        var newCompany = document.getElementById("Company").value;
-        var newModel = document.getElementById("Model").value;
-        var newMemory = document.getElementById("Memory").value;
-        var newPrice = document.getElementById("Price").value;
-
-        newObj = {
-          Company: newCompany,
-          Model: newModel,
-          Memory: newMemory,
-          Price: newPrice,
-        };
-
-        Arr.splice(2, 0, newObj);
+        var Total = 0;
 
         let text =
-          "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th></tr>";
-        for (let i = 0; i < Arr.length; i++)
+          "<br><br>Bill<br><table><tr><th>Description</th><th>Quantity</th><th>Amount</th></tr>";
+        for (let i = 0; i < arr.length; i++) {
           text +=
             "<tr><td>" +
-            Arr[i].Company +
+            arr[i][0] +
             "</td><td>" +
-            Arr[i].Model +
+            arr[i][1] +
             "</td><td>" +
-            Arr[i].Memory +
-            "</td><td>" +
-            Arr[i].Price +
+            arr[i][2] +
             "</td></tr>";
-
+          Total += arr[i][2];
+        }
+        text += "<tr><td>Total</td><td></td><td>" + Total + "</td></tr>";
         text += "</table>";
-        document.getElementById("res").innerHTML = text;
+        document.getElementById("final").innerHTML = text;
       }
     </script>
   </body>
