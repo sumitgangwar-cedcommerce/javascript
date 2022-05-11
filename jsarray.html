@@ -22,9 +22,13 @@
           <option value="Motorola">Motorola</option>
           <option value="Apple">Apple</option>
         </select>
-        <input type="number" name="" id="quantity" placeholder="quantity" />
-        <button type="button" onclick="Add()">Add</button>
-        <button type="submit" onclick="check()" >Generate Bill</button>
+        <input
+          type="number"
+          name=""
+          id="quantity"
+          placeholder="update quantity"
+        />
+        <button type="button" onclick="Add()">Update</button>
       </div>
       <div id="final"></div>
     </div>
@@ -94,27 +98,21 @@
 
         var quantity = document.getElementById("quantity").value;
         if (product == "Samsung") {
-          var Amount = arr[0].Price * quantity;
-          arr[0].Quantity -= quantity;
+          arr[0].Quantity = quantity;
         }
         if (product == "Nokia") {
-          var Amount = arr[1].Price * quantity;
-          arr[1].Quantity -= quantity;
+          arr[1].Quantity = quantity;
         }
         if (product == "Xiaomi") {
-          var Amount = arr[2].Price * quantity;
-          arr[2].Quantity -= quantity;
+          arr[2].Quantity = quantity;
         }
         if (product == "Motorola") {
-          var Amount = arr[3].Price * quantity;
-          arr[3].Quantity -= quantity;
+          arr[3].Quantity = quantity;
         }
         if (product == "Apple") {
-          var Amount = arr[4].Price * quantity;
-          arr[4].Quantity -= quantity;
+          arr[4].Quantity = quantity;
         }
 
-        Arr.push([product, quantity, Amount]);
         let tex =
           "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th><th>Quantity</th></tr>";
         for (let i = 0; i < arr.length; i++)
