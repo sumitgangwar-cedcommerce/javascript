@@ -11,65 +11,178 @@
   </head>
   <body>
     <div id="main">
-      <div id="res">
-        <select name="name" id="dropdown">
-          <option value="">-select field-</option>
+      <div id="res">res</div>
+      <div id="page">
+        <select name="sort" id="sort">
+          <option value="">-Sort-</option>
+          <option value="A">Ascending</option>
+          <option value="D">Descending</option>
+        </select>
+        <select name="sortBy" id="sortBy">
+          <option value="">-SortBy-</option>
           <option value="Company">Company</option>
           <option value="Model">Model</option>
           <option value="Memory">Memory</option>
           <option value="Price">Price</option>
         </select>
-        <input type="text" id="search" />
-        <button type="submit" onclick="check();">search</button>
+        <button type="submit" onclick="check()" ;>Apply</button>
       </div>
+
       <div id="show"></div>
     </div>
 
     <script>
-      const Company = ["Samsung", "Nokia", "Xiaomi", "Motorola", "Apple"];
-      const Model = ["Galaxy", "S730", "Note", "G10", "S12"];
-      const Memory = ["64", "128", "32", "32", "64"];
-      const Price = [15000, 22000, 12000, 15000, 25000];
+      const Arr = [
+        {
+          Company: "Samsung",
+          Model: "Galaxy",
+          Memory: 64,
+          Price: 15000,
+        },
+        {
+          Company: "Nokia",
+          Model: "S730",
+          Memory: 128,
+          Price: 22000,
+        },
+        {
+          Company: "Xiaomi",
+          Model: "Note",
+          Memory: 32,
+          Price: 12000,
+        },
+        {
+          Company: "Motorola",
+          Model: "G10",
+          Memory: 32,
+          Price: 15000,
+        },
+        {
+          Company: "Apple",
+          Model: "S12",
+          Memory: 64,
+          Price: 25000,
+        },
+      ];
 
-      function check() {
-        var dropdown = document.getElementById("dropdown").value;
-        var search = document.getElementById("search").value;
-
-        if (dropdown == "Company") {
-          for (var i = 0; i < Company.length; i++) {
-            if (Company[i] == search) break;
-          }
-        }
-        if (dropdown == "Model") {
-          for (var i = 0; i < Model.length; i++) {
-            if (Model[i] == search) break;
-          }
-        }
-        if (dropdown == "Memory") {
-          for (var i = 0; i < Memory.length; i++) {
-            if (Memory[i] == search) break;
-          }
-        }
-        if (dropdown == "Price") {
-          for (var i = 0; i < Price.length; i++) {
-            if (Price[i] == search) break;
-          }
-        }
-        let text =
-          "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th></tr>";
+      let text =
+        "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th></tr>";
+      for (let i = 0; i < Arr.length; i++)
         text +=
           "<tr><td>" +
-          Company[i] +
+          Arr[i].Company +
           "</td><td>" +
-          Model[i] +
+          Arr[i].Model +
           "</td><td>" +
-          Memory[i] +
+          Arr[i].Memory +
           "</td><td>" +
-          Price[i] +
+          Arr[i].Price +
           "</td></tr>";
 
+      text += "</table>";
+      document.getElementById("res").innerHTML = text;
+
+      function check() {
+        var sort = document.getElementById("sort").value;
+        var sortBy = document.getElementById("sortBy").value;
+
+        if (sort == "A") {
+          if (sortBy == "Memory") {
+            Arr.sort((a, b) => {
+              return a.Memory - b.Memory;
+            });
+          }
+          if (sortBy == "Company") {
+            Arr.sort((a, b) => {
+              let fa = a.Company.toLowerCase(),
+                fb = b.Company.toLowerCase();
+
+              if (fa < fb) {
+                return -1;
+              }
+              if (fa > fb) {
+                return 1;
+              }
+              return 0;
+            });
+          }
+          if (sortBy == "Model") {
+            Arr.sort((a, b) => {
+              let fa = a.Model.toLowerCase(),
+                fb = b.Model.toLowerCase();
+
+              if (fa < fb) {
+                return -1;
+              }
+              if (fa > fb) {
+                return 1;
+              }
+              return 0;
+            });
+          }
+          if (sortBy == "Price") {
+            Arr.sort((a, b) => {
+              return a.Price - b.Price;
+            });
+          }
+        }
+        if (sort == "D") {
+          if (sortBy == "Memory") {
+            Arr.sort((a, b) => {
+              return b.Memory - a.Memory;
+            });
+          }
+          if (sortBy == "Company") {
+            Arr.sort((a, b) => {
+              let fa = a.Company.toLowerCase(),
+                fb = b.Company.toLowerCase();
+
+              if (fa < fb) {
+                return 1;
+              }
+              if (fa > fb) {
+                return -1;
+              }
+              return 0;
+            });
+          }
+          if (sortBy == "Model") {
+            Arr.sort((a, b) => {
+              let fa = a.Model.toLowerCase(),
+                fb = b.Model.toLowerCase();
+
+              if (fa < fb) {
+                return 1;
+              }
+              if (fa > fb) {
+                return -1;
+              }
+              return 0;
+            });
+          }
+          if (sortBy == "Price") {
+            Arr.sort((a, b) => {
+              return b.Price - a.Price;
+            });
+          }
+        }
+
+        let text =
+          "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th></tr>";
+        for (let i = 0; i < Arr.length; i++)
+          text +=
+            "<tr><td>" +
+            Arr[i].Company +
+            "</td><td>" +
+            Arr[i].Model +
+            "</td><td>" +
+            Arr[i].Memory +
+            "</td><td>" +
+            Arr[i].Price +
+            "</td></tr>";
+
         text += "</table>";
-        document.getElementById("show").innerHTML = text;
+        document.getElementById("res").innerHTML = text;
       }
     </script>
   </body>
