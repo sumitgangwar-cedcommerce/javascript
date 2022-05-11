@@ -14,24 +14,9 @@
       <div id="res"></div>
       <br /><br />
       <div id="show">
-        <select name="product" id="product">
-          <option value="">-choose product-</option>
-          <option value="Samsung">Samsung</option>
-          <option value="Nokia">Nokia</option>
-          <option value="Xiaomi">Xiaomi</option>
-          <option value="Motorola">Motorola</option>
-          <option value="Apple">Apple</option>
-        </select>
-
-        <select name="rating" id="rating">
-          <option value="">-choose rating</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <button type="button" onclick="Add()">Rate</button>
+        <input type="number" id="min" placeholder="Minimum price" />
+        <input type="number" id="max" placeholder="Maximum price" />
+        <button type="button" onclick="Add()">Search</button>
       </div>
       <div id="final"></div>
     </div>
@@ -97,39 +82,28 @@
       document.getElementById("res").innerHTML = text;
 
       function Add() {
-        var product = document.getElementById("product").value;
+        var min = document.getElementById("min").value;
 
-        var rating = document.getElementById("rating").value;
-        if (product == "Samsung") {
-          arr[0].Rating = rating;
-        }
-        if (product == "Nokia") {
-          arr[1].Rating = rating;
-        }
-        if (product == "Xiaomi") {
-          arr[2].Rating = rating;
-        }
-        if (product == "Motorola") {
-          arr[3].Rating = rating;
-        }
-        if (product == "Apple") {
-          arr[4].Rating = rating;
+        var max = document.getElementById("max").value;
+
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].Price >= min && arr[i].Price <= max) Arr.push(arr[i]);
         }
 
         let tex =
           "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th><th>Rating</th></tr>";
-        for (let i = 0; i < arr.length; i++)
+        for (let i = 0; i < Arr.length; i++)
           tex +=
             "<tr><td>" +
-            arr[i].Company +
+            Arr[i].Company +
             "</td><td>" +
-            arr[i].Model +
+            Arr[i].Model +
             "</td><td>" +
-            arr[i].Memory +
+            Arr[i].Memory +
             "</td><td>" +
-            arr[i].Price +
+            Arr[i].Price +
             "</td><td>" +
-            arr[i].Rating +
+            Arr[i].Rating +
             "</td></tr>";
 
         tex += "</table>";
