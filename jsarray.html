@@ -1,126 +1,136 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      #main {
-        height: 75vh;
-        width: 60%;
-        margin: auto;
-      }
-    </style>
-  </head>
-  <body>
+    <head>
+        <style>
+            #main{
+                height: 75vh;
+                width: 60%;
+                margin: auto;
+                
+            }
+           
+
+           
+        </style>
+
+    </head>
+    <body>
     <div id="main">
-      <div id="res">res</div>
+        <div  id="res">
+          <table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th><th>Action</th></tr>
+            <tr>
+              <td>Samsung</td>
+              <td>Galaxy</td>
+              <td>64</td>
+              <td>15000</td>
+               <td> <input type="checkbox" id="Samsung"></td>
+            </tr>
+            <tr>
+              <td>Nokia</td>
+              <td>S730</td>
+              <td>128</td>
+              <td>22000</td>
+               <td><input type="checkbox" id="Nokia"></td>
+            </tr>
+            <tr>
+              <td>Xiaomi</td>
+              <td>Note</td>
+              <td>32</td>
+              <td>12000</td>
+               <td><input type="checkbox" id="Xiaomi"></td>
+            </tr>
+            <tr>
+              <td>Motorola</td>
+              <td>G10</td>
+              <td>32</td>
+              <td>15000</td>
+               <td> <input type="checkbox" id="Motorola"></td>
+            </tr>
+            <tr>
+              <td>Apple</td>
+              <td>S12</td>
+              <td>64</td>
+              <td>25000</td>
+               <td> <input type="checkbox" id="Apple"></td>
+            </tr>
 
-      <br /><br /><br /><br />
-      <div id="show">
-        <select name="product" id="product">
-          <option value="">-select product-</option>
-          <option value="Samsung">Samsung Galaxy</option>
-          <option value="Nokia">Nokia S730</option>
-          <option value="Xiaomi">Xiaomi Note</option>
-          <option value="Motorola">Motorola G10</option>
-          <option value="Apple">Apple S12</option>
-        </select>
-        <input
-          type="number"
-          name="quantity"
-          id="quantity"
-          placeholder="quantity"
-        />
-        <button type="button" onclick="Add()" ;>Add</button>
-        <button type="submit" onclick="check()" ;>Generate Bill</button>
-      </div>
-      <div id="final"></div>
+           <tr><td></td><td></td><td></td><td></td><td> <button type="submit" onclick="check()";>Delete</button></td></tr>
+        </div>
+        
+        <br><br><br><br>
+        <div id="show">
+         
+        </div>
+        <div id="final"></div>
     </div>
+        
 
-    <script>
-      const Arr = [
-        {
-          Company: "Samsung",
-          Model: "Galaxy",
-          Memory: 64,
-          Price: 15000,
-        },
-        {
-          Company: "Nokia",
-          Model: "S730",
-          Memory: 128,
-          Price: 22000,
-        },
-        {
-          Company: "Xiaomi",
-          Model: "Note",
-          Memory: 32,
-          Price: 12000,
-        },
-        {
-          Company: "Motorola",
-          Model: "G10",
-          Memory: 32,
-          Price: 15000,
-        },
-        {
-          Company: "Apple",
-          Model: "S12",
-          Memory: 64,
-          Price: 25000,
-        },
-      ];
 
-      let text =
-        "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th></tr>";
-      for (let i = 0; i < Arr.length; i++)
-        text +=
-          "<tr><td>" +
-          Arr[i].Company +
-          "</td><td>" +
-          Arr[i].Model +
-          "</td><td>" +
-          Arr[i].Memory +
-          "</td><td>" +
-          Arr[i].Price +
-          "</td></tr>";
 
-      text += "</table>";
-      document.getElementById("res").innerHTML = text;
-      const arr = [];
-      count = 0;
+     <script>
+         
+          
+         const Arr =[{
+           Company:"Samsung",
+           Model:"Galaxy",
+           Memory:64,
+           Price:15000
+         },{
+           Company:"Nokia",
+           Model:"S730",
+           Memory:128,
+           Price:22000
+         },
+         {
+           Company:"Xiaomi",
+           Model:"Note",
+           Memory:32,
+           Price:12000
+         },
+         {
+           Company:"Motorola",
+           Model:"G10",
+           Memory:32,
+           Price:15000
+         },
+         {
+           Company:"Apple",
+           Model:"S12",
+           Memory:64,
+           Price:25000
+         }];
+           
+      /*   */
+           
+           
+         
 
-      function Add() {
-        var product = document.getElementById("product").value;
 
-        var quantity = document.getElementById("quantity").value;
-        if (product == "Samsung") var Amount = Arr[0].Price * quantity;
-        if (product == "Nokia") var Amount = Arr[1].Price * quantity;
-        if (product == "Xiaomi") var Amount = Arr[2].Price * quantity;
-        if (product == "Motorola") var Amount = Arr[3].Price * quantity;
-        if (product == "Apple") var Amount = Arr[4].Price * quantity;
+         function check(){
+           var arr= [];
+          if (!document.getElementById('Samsung').checked) {
+             arr.push(Arr[0]);
+           }
+           if (!document.getElementById('Nokia').checked) {
+             arr.push(Arr[1]);
+           }
+           if (!document.getElementById('Xiaomi').checked) {
+             arr.push(Arr[2]);
+           }
+           if (!document.getElementById('Motorola').checked) {
+             arr.push(Arr[3]);
+           }
+           if (!document.getElementById('Apple').checked) {
+             arr.push(Arr[4]);
+           }
+           
+           let text="<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th><th>Action</th></tr><br><br><br><br>";
+          for(let i=0;i<arr.length;i++)
+            text+="<tr><td>"+arr[i].Company+"</td><td>"+arr[i].Model+"</td><td>"+arr[i].Memory+"</td><td>"+ arr[i].Price+"</td></tr>";
 
-        arr.push([product, quantity, Amount]);
-      }
-
-      function check() {
-        var Total = 0;
-
-        let text =
-          "<br><br>Bill<br><table><tr><th>Description</th><th>Quantity</th><th>Amount</th></tr>";
-        for (let i = 0; i < arr.length; i++) {
-          text +=
-            "<tr><td>" +
-            arr[i][0] +
-            "</td><td>" +
-            arr[i][1] +
-            "</td><td>" +
-            arr[i][2] +
-            "</td></tr>";
-          Total += arr[i][2];
-        }
-        text += "<tr><td>Total</td><td></td><td>" + Total + "</td></tr>";
-        text += "</table>";
-        document.getElementById("final").innerHTML = text;
-      }
-    </script>
-  </body>
+            text+="</table>";
+            document.getElementById("res").innerHTML=text;
+           }
+     </script>
+    </body>
 </html>
