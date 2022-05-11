@@ -2,23 +2,28 @@
 <html>
   <head>
     <style>
-      table {
-        text-align: justify;
-        padding: 2%;
-      }
-      th {
-        border-bottom: 1px solid gray;
-      }
-      td {
-        border-bottom: 1px solid gray;
-      }
-      tr {
-        margin: 5%;
+      #main {
+        height: 75vh;
+        width: 60%;
+        margin: auto;
       }
     </style>
   </head>
   <body>
-    <div id="res"></div>
+    <div id="main">
+      <div id="res">
+        <select name="name" id="dropdown">
+          <option value="">-select field-</option>
+          <option value="Company">Company</option>
+          <option value="Model">Model</option>
+          <option value="Memory">Memory</option>
+          <option value="Price">Price</option>
+        </select>
+        <input type="text" id="search" />
+        <button type="submit" onclick="check();">search</button>
+      </div>
+      <div id="show"></div>
+    </div>
 
     <script>
       const Company = ["Samsung", "Nokia", "Xiaomi", "Motorola", "Apple"];
@@ -26,9 +31,32 @@
       const Memory = ["64", "128", "32", "32", "64"];
       const Price = [15000, 22000, 12000, 15000, 25000];
 
-      let text =
-        "<table><tr><th>Company<t/h><th>Model</th><th>Memory(GB)</th><th>Price(Rs)</th></tr>";
-      for (let i = 0; i < 5; i++) {
+      function check() {
+        var dropdown = document.getElementById("dropdown").value;
+        var search = document.getElementById("search").value;
+
+        if (dropdown == "Company") {
+          for (var i = 0; i < Company.length; i++) {
+            if (Company[i] == search) break;
+          }
+        }
+        if (dropdown == "Model") {
+          for (var i = 0; i < Model.length; i++) {
+            if (Model[i] == search) break;
+          }
+        }
+        if (dropdown == "Memory") {
+          for (var i = 0; i < Memory.length; i++) {
+            if (Memory[i] == search) break;
+          }
+        }
+        if (dropdown == "Price") {
+          for (var i = 0; i < Price.length; i++) {
+            if (Price[i] == search) break;
+          }
+        }
+        let text =
+          "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th></tr>";
         text +=
           "<tr><td>" +
           Company[i] +
@@ -38,10 +66,11 @@
           Memory[i] +
           "</td><td>" +
           Price[i] +
-          "</td><tr>";
+          "</td></tr>";
+
+        text += "</table>";
+        document.getElementById("show").innerHTML = text;
       }
-      text += "</table>";
-      document.getElementById("res").innerHTML = text;
     </script>
   </body>
 </html>
