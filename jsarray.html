@@ -12,23 +12,27 @@
   <body>
     <div id="main">
       <div id="res">res</div>
-      <div id="page">
-        <select name="sort" id="sort">
-          <option value="">-Sort-</option>
-          <option value="A">Ascending</option>
-          <option value="D">Descending</option>
-        </select>
-        <select name="sortBy" id="sortBy">
-          <option value="">-SortBy-</option>
-          <option value="Company">Company</option>
-          <option value="Model">Model</option>
-          <option value="Memory">Memory</option>
-          <option value="Price">Price</option>
-        </select>
-        <button type="submit" onclick="check()" ;>Apply</button>
-      </div>
 
-      <div id="show"></div>
+      <br /><br /><br /><br />
+      <div id="show">
+        <label for="Company">Company:</label>
+        <br />
+        <input type="text" id="Company" />
+        <br />
+        <label for="Model">Model:</label>
+        <br />
+        <input type="text" id="Model" />
+        <br />
+        <label for="Memory">Memory:</label>
+        <br />
+        <input type="number" id="Memory" />
+        <br />
+        <label for="Price">Price:</label>
+        <br />
+        <input type="number" id="Price" />
+        <br />
+        <button type="submit" onclick="check()" ;>Add</button>
+      </div>
     </div>
 
     <script>
@@ -83,89 +87,19 @@
       document.getElementById("res").innerHTML = text;
 
       function check() {
-        var sort = document.getElementById("sort").value;
-        var sortBy = document.getElementById("sortBy").value;
+        var newCompany = document.getElementById("Company").value;
+        var newModel = document.getElementById("Model").value;
+        var newMemory = document.getElementById("Memory").value;
+        var newPrice = document.getElementById("Price").value;
 
-        if (sort == "A") {
-          if (sortBy == "Memory") {
-            Arr.sort((a, b) => {
-              return a.Memory - b.Memory;
-            });
-          }
-          if (sortBy == "Company") {
-            Arr.sort((a, b) => {
-              let fa = a.Company.toLowerCase(),
-                fb = b.Company.toLowerCase();
+        newObj = {
+          Company: newCompany,
+          Model: newModel,
+          Memory: newMemory,
+          Price: newPrice,
+        };
 
-              if (fa < fb) {
-                return -1;
-              }
-              if (fa > fb) {
-                return 1;
-              }
-              return 0;
-            });
-          }
-          if (sortBy == "Model") {
-            Arr.sort((a, b) => {
-              let fa = a.Model.toLowerCase(),
-                fb = b.Model.toLowerCase();
-
-              if (fa < fb) {
-                return -1;
-              }
-              if (fa > fb) {
-                return 1;
-              }
-              return 0;
-            });
-          }
-          if (sortBy == "Price") {
-            Arr.sort((a, b) => {
-              return a.Price - b.Price;
-            });
-          }
-        }
-        if (sort == "D") {
-          if (sortBy == "Memory") {
-            Arr.sort((a, b) => {
-              return b.Memory - a.Memory;
-            });
-          }
-          if (sortBy == "Company") {
-            Arr.sort((a, b) => {
-              let fa = a.Company.toLowerCase(),
-                fb = b.Company.toLowerCase();
-
-              if (fa < fb) {
-                return 1;
-              }
-              if (fa > fb) {
-                return -1;
-              }
-              return 0;
-            });
-          }
-          if (sortBy == "Model") {
-            Arr.sort((a, b) => {
-              let fa = a.Model.toLowerCase(),
-                fb = b.Model.toLowerCase();
-
-              if (fa < fb) {
-                return 1;
-              }
-              if (fa > fb) {
-                return -1;
-              }
-              return 0;
-            });
-          }
-          if (sortBy == "Price") {
-            Arr.sort((a, b) => {
-              return b.Price - a.Price;
-            });
-          }
-        }
+        Arr.splice(2, 0, newObj);
 
         let text =
           "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th></tr>";
