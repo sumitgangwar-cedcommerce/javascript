@@ -22,13 +22,16 @@
           <option value="Motorola">Motorola</option>
           <option value="Apple">Apple</option>
         </select>
-        <input
-          type="number"
-          name=""
-          id="quantity"
-          placeholder="update quantity"
-        />
-        <button type="button" onclick="Add()">Update</button>
+
+        <select name="rating" id="rating">
+          <option value="">-choose rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button type="button" onclick="Add()">Rate</button>
       </div>
       <div id="final"></div>
     </div>
@@ -40,35 +43,35 @@
           Model: "Galaxy",
           Memory: 64,
           Price: 15000,
-          Quantity: 20,
+          Rating: 0,
         },
         {
           Company: "Nokia",
           Model: "S730",
           Memory: 128,
           Price: 22000,
-          Quantity: 15,
+          Rating: 0,
         },
         {
           Company: "Xiaomi",
           Model: "Note",
           Memory: 32,
           Price: 12000,
-          Quantity: 21,
+          Rating: 0,
         },
         {
           Company: "Motorola",
           Model: "G10",
           Memory: 32,
           Price: 15000,
-          Quantity: 13,
+          Rating: 0,
         },
         {
           Company: "Apple",
           Model: "S12",
           Memory: 64,
           Price: 25000,
-          Quantity: 18,
+          Rating: 0,
         },
       ];
 
@@ -87,7 +90,7 @@
           "</td><td>" +
           arr[i].Price +
           "</td><td>" +
-          arr[i].Quantity +
+          arr[i].Rating +
           "</td></tr>";
 
       text += "</table>";
@@ -96,25 +99,25 @@
       function Add() {
         var product = document.getElementById("product").value;
 
-        var quantity = document.getElementById("quantity").value;
+        var rating = document.getElementById("rating").value;
         if (product == "Samsung") {
-          arr[0].Quantity = quantity;
+          arr[0].Rating = rating;
         }
         if (product == "Nokia") {
-          arr[1].Quantity = quantity;
+          arr[1].Rating = rating;
         }
         if (product == "Xiaomi") {
-          arr[2].Quantity = quantity;
+          arr[2].Rating = rating;
         }
         if (product == "Motorola") {
-          arr[3].Quantity = quantity;
+          arr[3].Rating = rating;
         }
         if (product == "Apple") {
-          arr[4].Quantity = quantity;
+          arr[4].Rating = rating;
         }
 
         let tex =
-          "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th><th>Quantity</th></tr>";
+          "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>price(Rs)</th><th>Rating</th></tr>";
         for (let i = 0; i < arr.length; i++)
           tex +=
             "<tr><td>" +
@@ -126,31 +129,11 @@
             "</td><td>" +
             arr[i].Price +
             "</td><td>" +
-            arr[i].Quantity +
+            arr[i].Rating +
             "</td></tr>";
 
         tex += "</table>";
         document.getElementById("res").innerHTML = tex;
-      }
-      function check() {
-        var Total = 0;
-
-        let text =
-          "<br><br>Bill<br><table><tr><th>Description</th><th>Quantity</th><th>Amount</th></tr>";
-        for (let i = 0; i < Arr.length; i++) {
-          text +=
-            "<tr><td>" +
-            Arr[i][0] +
-            "</td><td>" +
-            Arr[i][1] +
-            "</td><td>" +
-            Arr[i][2] +
-            "</td></tr>";
-          Total += Arr[i][2];
-        }
-        text += "<tr><td>Total</td><td></td><td>" + Total + "</td></tr>";
-        text += "</table>";
-        document.getElementById("final").innerHTML = text;
       }
     </script>
   </body>
